@@ -45,9 +45,9 @@ public class Stack <Item> {
         n--;
         return item;  //eturn the saved item
     }
-    /*fazer o MAIN - ela deve er do tecado 
+    /*fazer o MAIN - ela deve receber do tecado 
     se ler um traço e a pilha não estiver vazia
-    dezempilhe e imprima a string que estava no topo da tela
+    desempilhe e imprima a string que estava no topo da tela
 
     se não então o programa leu uma string 
     empilhe ela
