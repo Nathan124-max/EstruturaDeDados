@@ -1,5 +1,4 @@
 
-import java.util.ArrayList;
 import java.util.NoSuchElementException;
 //import java.util.Queue;
 import java.util.Scanner;
@@ -71,14 +70,16 @@ public class Queue<Item> {
         
         Scanner leitor = new Scanner(System.in);
         String stringDequeue = "";
-        String sair = "não";
         Queue iniciandoQueue = new Queue<>();
-        do{
-            System.out.println("Escreva...");
+        System.out.println("Escreva...");
+        System.out.println("para parar, digite (pare)");
+
+        while(leitor.hasNextLine()){ 
             String stringLida = leitor.nextLine();
+            if(stringLida.equalsIgnoreCase("pare")){ break; }
             String [] stringSeparada = stringLida.split(" ");
             for(String s : stringSeparada){
-                if(s.equals("")){
+                if(s.equals("-")){
                     String string = (String) iniciandoQueue.dequeue();
                     if(stringDequeue.equals("")){
                         stringDequeue += string; 
@@ -92,10 +93,9 @@ public class Queue<Item> {
                 }
             }
             System.out.println(stringDequeue);
-            System.out.println("Deseja parar?");
-            sair = leitor.nextLine();
             
-        }while(sair.equalsIgnoreCase("não"));
+        }
+        System.out.println("Finalizado");
         leitor.close();
     }
 

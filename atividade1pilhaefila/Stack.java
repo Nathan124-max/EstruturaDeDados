@@ -39,9 +39,9 @@ public class Stack <Item> {
     @return the item most recently added
     @throws NoSushiElementException if this stack is empty*/
 
-    public Item pop(Item item){
+    public Item pop(){
         if(isEmpty()) throw new NoSuchElementException("Stack underflow");
-        item = first.item; //save item to return
+        Item item = first.item; //save item to return
         first = first.next; //delee first node
         n--;
         return item;  //eturn the saved item
@@ -50,19 +50,20 @@ public class Stack <Item> {
         Scanner leitor = new Scanner(System.in);
         String parar = "não";
         Stack iniciandoStack = new Stack<>();
-        do{
+        while(leitor.hasNextLine()){
+            System.out.println("Escreva...");
             String string = leitor.nextLine();
             String [] stringSeparada = string.split(" ");
             String stringDesempilhada = "";
             for(String s : stringSeparada){
                 if(s.equals("-")){
-                    Object itemPop = new Object();
-                    itemPop = s;
-                    String stringPop = (String) iniciandoStack.pop(itemPop);
+                    Object obj = iniciandoStack.pop();
+                    String str = obj.toString();
+                    
                     if(stringDesempilhada.equals(" ")){
-                        stringDesempilhada += stringPop;
+                        stringDesempilhada += str;
                     }else{
-                        stringDesempilhada += " " + stringPop;
+                        stringDesempilhada += " " + str;
                     }
                 }else{
                     Object itemPush = new Object();
@@ -72,7 +73,7 @@ public class Stack <Item> {
             System.out.println("Desempilhando..." +stringDesempilhada);
             System.out.println("Quer parar?");
             parar = leitor.nextLine();
-        }while(parar.equalsIgnoreCase("não"));
+        }
         leitor.close();
         System.out.println("Finalizado");
         
