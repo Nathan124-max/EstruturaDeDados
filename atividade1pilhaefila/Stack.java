@@ -1,9 +1,10 @@
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.lang.Object;
 
 public class Stack <Item> {
     private Node <Item> first;  //top of stack
-    private int n;              //size of the stack
+    private int N;              //size of the stack
 
 
     //helper linked list class
@@ -14,7 +15,7 @@ public class Stack <Item> {
     //initializes an empty stack
     public Stack (){
         first = null;
-        n = 0;
+        N = 0;
     }
     public boolean isEmpty(){
         return first == null;
@@ -23,7 +24,7 @@ public class Stack <Item> {
     @eturn the number o itens in this stack */
 
     public int size (){
-        return n;
+        return N;
     }
     /* adds the itm to this stack
     @param item the item to add */
@@ -33,7 +34,7 @@ public class Stack <Item> {
         first = new Node<Item>();
         first.item = item;
         first.next = oldFirst;
-        n++;
+        N++;
     }
     /* removes and return the item most recent added to this stack
     @return the item most recently added
@@ -43,23 +44,24 @@ public class Stack <Item> {
         if(isEmpty()) throw new NoSuchElementException("Stack underflow");
         Item item = first.item; //save item to return
         first = first.next; //delee first node
-        n--;
+        N--;
+        if(isEmpty()) first = null; N = 0;
         return item;  //eturn the saved item
     }
     public static void main (String [] args){
         Scanner leitor = new Scanner(System.in);
-        String parar = "não";
         Stack iniciandoStack = new Stack<>();
+        System.out.println("Escreva...");
+        System.out.println("se desejar parar a execução, difgite (pare)");
         while(leitor.hasNextLine()){
-            System.out.println("Escreva...");
             String string = leitor.nextLine();
+            if(string.equalsIgnoreCase("pare")){ break; }
             String [] stringSeparada = string.split(" ");
             String stringDesempilhada = "";
             for(String s : stringSeparada){
                 if(s.equals("-")){
                     Object obj = iniciandoStack.pop();
                     String str = obj.toString();
-                    
                     if(stringDesempilhada.equals(" ")){
                         stringDesempilhada += str;
                     }else{
@@ -67,12 +69,11 @@ public class Stack <Item> {
                     }
                 }else{
                     Object itemPush = new Object();
+                    itemPush = s;
                     iniciandoStack.push(itemPush);
                 }
             }
             System.out.println("Desempilhando..." +stringDesempilhada);
-            System.out.println("Quer parar?");
-            parar = leitor.nextLine();
         }
         leitor.close();
         System.out.println("Finalizado");
