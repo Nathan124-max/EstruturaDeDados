@@ -1,4 +1,5 @@
 import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 public class Stack <Item> {
     private Node <Item> first;  //top of stack
@@ -40,10 +41,15 @@ public class Stack <Item> {
 
     public Item pop(Item item){
         if(isEmpty()) throw new NoSuchElementException("Stack underflow");
-        Item item = first.item; //save item to return
+        item = first.item; //save item to return
         first = first.next; //delee first node
         n--;
         return item;  //eturn the saved item
+    }
+    public static void main (String [] args){
+        Scanner leitor = new Scanner(System.in);
+        
+
     }
     /*fazer o MAIN - ela deve receber do tecado 
     se ler um traço e a pilha não estiver vazia
