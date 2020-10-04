@@ -48,6 +48,33 @@ public class Stack <Item> {
     }
     public static void main (String [] args){
         Scanner leitor = new Scanner(System.in);
+        String parar = "não";
+        Stack iniciandoStack = new Stack<>();
+        do{
+            String string = leitor.nextLine();
+            String [] stringSeparada = string.split(" ");
+            String stringDesempilhada = "";
+            for(String s : stringSeparada){
+                if(s.equals("-")){
+                    Object itemPop = new Object();
+                    itemPop = s;
+                    String stringPop = (String) iniciandoStack.pop(itemPop);
+                    if(stringDesempilhada.equals(" ")){
+                        stringDesempilhada += stringPop;
+                    }else{
+                        stringDesempilhada += " " + stringPop;
+                    }
+                }else{
+                    Object itemPush = new Object();
+                    iniciandoStack.push(itemPush);
+                }
+            }
+            System.out.println("Desempilhando..." +stringDesempilhada);
+            System.out.println("Quer parar?");
+            parar = leitor.nextLine();
+        }while(parar.equalsIgnoreCase("não"));
+        leitor.close();
+        System.out.println("Finalizado");
         
 
     }
