@@ -1,11 +1,11 @@
 import java.util.NoSuchElementException;
 import java.util.Scanner;
-import java.lang.Object;
 
 public class Stack <Item> {
-    private Node <Item> first;  //top of stack
-    private int N;              //size of the stack
-
+    private Node <Item> first;  
+    private int N;              
+    //top of stack
+    //size of the stack
 
     //helper linked list class
     private static class Node <Item> {
@@ -49,23 +49,25 @@ public class Stack <Item> {
         return item;  //eturn the saved item
     }
     public static void main (String [] args){
-        Scanner leitor = new Scanner(System.in);
         Stack iniciandoStack = new Stack<>();
-        System.out.println("Escreva...");
-        System.out.println("se desejar parar a execução, difgite (pare)");
-        while(leitor.hasNextLine()){
-            String string = leitor.nextLine();
-            if(string.equalsIgnoreCase("pare")){ break; }
+        System.out.println("Insira na pilha..");
+        System.out.println("se desejar parar a execução, digite (pare)");
+        Scanner info = new Scanner(System.in);
+        while(info.hasNextLine()){
+            String string = info.nextLine();
+            if(string.equalsIgnoreCase("pare")){ 
+                break; 
+            }
             String [] stringSeparada = string.split(" ");
             String stringDesempilhada = "";
             for(String s : stringSeparada){
                 if(s.equals("-")){
-                    Object obj = iniciandoStack.pop();
-                    String str = obj.toString();
+                    Object itemPop = iniciandoStack.pop();
+                    String transformaStr = itemPop.toString();
                     if(stringDesempilhada.equals(" ")){
-                        stringDesempilhada += str;
+                        stringDesempilhada += transformaStr;
                     }else{
-                        stringDesempilhada += " " + str;
+                        stringDesempilhada += " " + transformaStr;
                     }
                 }else{
                     Object itemPush = new Object();
@@ -73,20 +75,20 @@ public class Stack <Item> {
                     iniciandoStack.push(itemPush);
                 }
             }
-            System.out.println("Desempilhando..." +stringDesempilhada);
+            System.out.println("Item/itens desempilhados > " +stringDesempilhada);
         }
-        leitor.close();
-        System.out.println("Finalizado");
+        info.close();
+        System.out.println("Pilha finalizada.");
         
 
     }
-    /*fazer o MAIN - ela deve receber do tecado 
+    /*
+    fazer o MAIN - ela deve receber do tecado 
     se ler um traço e a pilha não estiver vazia
     desempilhe e imprima a string que estava no topo da tela
-
     se não então o programa leu uma string 
     empilhe ela
     não havendo input do teclado indique quantas string estão na pilha
     o programa encerra quando não houve mais nada a ser lido ou a ser 
-    interrompido (ctrl + c ou ctrl + d) */
+    interrompido */
 }
