@@ -27,7 +27,8 @@ public class Quicksort {
     //and return the index j.
     private staticint rand_partition(Comparable[] a, int lo, int hi){
         int n= hi-lo;
-        int i = gerador.nextInt(n) + lo;
+        int i = gerador.nextInt(n) + lo; 
+        // testando o vscode, pode apagar
 
         exch(a,i,hi);
         return partition(a,lo,hi);
